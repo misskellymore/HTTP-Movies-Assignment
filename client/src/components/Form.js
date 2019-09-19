@@ -1,11 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
-const Form = () => {
+
+const Form = (props) => {
+
+    const handleSubmit = e => {
+        event.preventDefault();
+        axios.put('http://localhost:5000/api/movies/${movie.id}', movie)
+             .then(res => {
+                 console.log(res);
+                 props.history.push('/')
+             })
+             
+             .catch(err => console.log(err.response));
+    };
     
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input  type="text"
                     name="title"
                     placeholder="Title"
